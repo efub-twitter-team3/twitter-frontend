@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import {SearchIcon, OptionIcon} from './Icons';
 import '../App.css';
+import axios from "axios";
 
 //나를 위한 트렌트 컴포넌트
 const TrendContent = () => {
@@ -38,6 +39,26 @@ const FollowContent = () => {
 //오른쪽 네비게이션 메인 컴포넌트
 function RightNav() {
     const [isFocused, setIsFocused] = useState(false);
+    const getResult = async (id) => {
+        const user = await axios.get("/users/"+id)
+        .then(user => console.log(user['data']))
+        .catch(function (error) {
+            if (error.response) {
+                console.log(error.response.status)
+            }
+          });
+        const post = await axios.get("/posts/"+id)
+        .then(post => console.log(post['data']))
+        .catch(function (error) {
+            if (error.response) {
+                console.log(error.response.status)
+            }
+          });
+      };
+    const handleChange = (e) => {
+        if (e.target.value !== "") 
+            getResult(e.target.value)
+    };
   return (
     <div className="RightNavWrapper">
         <div className="RightNavHeader"> {/*오른쪽 네비게이션 헤더(검색 입력창)*/}
@@ -46,7 +67,8 @@ function RightNav() {
                 <input className="RightSearchInput"
                 placeholder="트위터 검색" 
                 onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}/>
+                onBlur={() => setIsFocused(false)}
+                onChange={handleChange}/>
             </div>
             {isFocused && <div className="SearchModal">사용자, 화제, 키워드를 검색해보세요</div>}
         </div>

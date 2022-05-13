@@ -3,7 +3,7 @@ import React, {useState, useEffect, useRef} from "react";
 import {HeaderIcon,MediaIcon,GifIcon,VoteIcon,EmoticonIcon, GlobalIcon, OptionIcon,
   ReserveIcon,GpsIcon,ReplyIcon,ReTweetIcon,LikeIcon,ShareIcon} from './Icons';
 import '../App.css';
-//import axios from "axios";
+import axios from "axios";
 
 //최상단 트윗 입력 컴포넌트
 const TopContent = () => {
@@ -13,8 +13,14 @@ const TopContent = () => {
     setInputs(e.target.value);
     e.target.value !== '' ? setIsDisabled(false) : setIsDisabled(true)
   }
-  const SubmitInputs = () => {
+  const SubmitInputs = async () => {
     console.log(inputs)
+    const response = await axios.post("/posts",
+    {
+      "userId" : 2,
+	    "content" : inputs
+    })
+    .catch(e => console.log(response))
   }
   return(
   <div className="TopContentWrapper">
@@ -57,12 +63,16 @@ const Modal =({isOpenModal, setIsOpenModal, id})=> {
       setIsOpenModal(true);
     }
   }
+  const deletePost = async (id) => {
+    const response = await axios.delete("/posts/"+id)
+    .catch(e => console.log(response))
+  }
  
   return (
     <div ref={wrapperRef} value={isOpenModal} className="Modal">
       <button className = "ModalButton" style={{color: 'red'}} onClick={() => setDeleteModal(true)}>삭제</button>
       <button className = "ModalButton">내 프로필 메인에 올리기</button>
-      <button className = "ModalButton">리스트에서 {id} 추가/삭제하기</button>
+      <button className = "ModalButton">리스트에서 추가/삭제하기</button>
       <button className = "ModalButton">답글을 달 수 있는 사람 변경하기</button>
       <button className = "ModalButton">트윗 담아가기</button>
       <button className = "ModalButton">트윗 애널리틱스 보기</button>
@@ -70,7 +80,7 @@ const Modal =({isOpenModal, setIsOpenModal, id})=> {
       <div className="DeleteModal">
         <p className="DeleteModalTitle">트윗을 삭제할까요?</p>
         이 동작은 취소가 불가능하며 내 프로필, 나를 팔로우하는 계정의 타임라인, 그리고 트위터 검색 결과에서 삭제됩니다. 
-        <button className="DeleteButton" onClick={() => {console.log(id); setIsOpenModal(false);}}>삭제</button>
+        <button className="DeleteButton" onClick={() => {deletePost(id); setIsOpenModal(false);}}>삭제</button>
         <button className="DeleteCancleButton" onClick={() => (setIsOpenModal(false))}>취소</button>
       </div> : null}
       {/*onClick={console.log(id)}라고 적으면 모달 창이 뜰 때마다 함수가 실행*/}
@@ -80,7 +90,7 @@ const Modal =({isOpenModal, setIsOpenModal, id})=> {
 }
 
 //트윗 컴포넌트
-const Content = ({id}) => {
+const Content = ({post}) => {
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
     setShowModal(true);
@@ -90,17 +100,17 @@ const Content = ({id}) => {
       <div className="ProfileIcon"></div>
       <div className="ContentRightWrapper">
         <div className="ContentTopWrapper">
-          <h4 style={{margin: 0}}>닉네임</h4>
-          <p className="IDText">@ident</p>
+          <h4 style={{margin: 0}}>{post.user.nickname}</h4>
+          <p className="IDText">{post.user.identifier}</p>
           <p className="IDText">·</p>
-          <p className="IDText">시간</p>
+          <p className="IDText">{post.date}</p>
         </div>
-        dkdk
+        {post.content}
         <div className="ContentBottomWrapper">
           {ReplyIcon}{ReTweetIcon}{LikeIcon}{ShareIcon}
         </div>
       </div>
-      {showModal && <Modal isOpenModal={showModal} setIsOpenModal={setShowModal} id={id}/>}
+      {showModal && <Modal isOpenModal={showModal} setIsOpenModal={setShowModal} id={post.postId}/>}
       <div onClick={e => e.stopPropagation()}>
         <button className="OptionButton" onClick={openModal}>{OptionIcon}</button>
       </div>
@@ -110,27 +120,24 @@ const Content = ({id}) => {
 
 //메인 컴포넌트
 function Main() {
-  //axios 시험 용
-  {/*const getpost = async () => {
+  const [post, setPost] = useState([])
+  const getpost = async () => {
     const response = await axios.get("/posts")
     .catch(e => console.log(response))
+    setPost(response['data'].reverse())
     console.log(response['data'])
   };
   
   useEffect(() => {
     getpost();
-  }, []);*/}
+  }, []);
   return (
     <div className="MainWrapper">
         <div className="MainHeader"> {/*홈 헤더*/}
             홈 {HeaderIcon}
         </div>
         <TopContent/>
-        <Content id = {"1"}/>
-        <Content id = {"2"}/>
-        <Content id = {"3"}/>
-        <Content id = {"4"}/>
-        <Content id = {"5"}/>
+        {post.map(p => <Content key = {p.postId} post = {p}/>)}
     </div>
   );
 }
