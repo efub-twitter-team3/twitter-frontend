@@ -1,0 +1,67 @@
+:root {
+    --color-twitter: rgb(29, 155, 240);
+    --color-backbase-grey: #f0f0f0;
+    --color-light-grey: grey;
+    --color--grey: rgb(83, 100, 113);
+
+    --font-large: 48px;
+    --font-medium: 18px;
+    --font-regular: 15x;
+    --font-small: 13px;
+    --font-micro: 14px;
+
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+
+    --animation-duration: 90ms;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  html,body {
+    margin: 0;
+    cursor: default;
+    height: 100vh;
+  }
+
+  button {
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+
+  h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    color: var(--color-black);
+    margin: 16px 0px;
+  }
+  
+  h2 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+    margin: 8px 0;
+  }
+  
+  h3 {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 8px 0;
+  }
+  
+  p {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 4px 0;
+  }
+
+  .app {
+    height: 100%;
+  }
+  
