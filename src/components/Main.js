@@ -7,6 +7,8 @@ import Sidebar from "./sidebar/Sidebar";
 import RightNav from "./RightNav";
 import ProfileImg from "../assets/images/profileImg.jpg";
 
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
 //최상단 트윗 입력 컴포넌트
 const TopContent = () => {
   const [inputs, setInputs] = useState('');
@@ -127,7 +129,7 @@ const Content = ({post}) => {
 function Main() {
   const [post, setPost] = useState([])
   const getpost = async () => {
-    const response = await axios.get("/posts")
+    const response = await axios.get(`${PROXY}/posts`)
     .then(res => setPost(res['data'].reverse()))
     .catch(e => console.log(response))
   };
