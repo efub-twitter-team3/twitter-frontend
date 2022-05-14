@@ -19,10 +19,11 @@ const TopContent = () => {
     console.log(inputs)
     const response = await axios.post("/posts",
     {
-      "userId" : 2,
+      "userId" : 1,
 	    "content" : inputs
     })
     .catch(e => console.log(response))
+    setInputs('')
   }
   return(
   <div className="TopContentWrapper">
@@ -31,7 +32,8 @@ const TopContent = () => {
       <input 
       className="MainInput" 
       placeholder="무슨 일이 일어나고 있나요?" 
-      onChange={handleInputChange}/>
+      onChange={handleInputChange}
+      value = {inputs}/>
       {isDiasabled ? null : 
       <div className="TopRightMiddleWrapper">
         {GlobalIcon}{'모든사람들이 답글을 달 수 있습니다'}  
@@ -131,7 +133,7 @@ function Main() {
   
   useEffect(() => {
     getpost();
-  }, []);
+  }, [post]);
   return (
     <div style={{display: 'flex'}}>
       <Sidebar/>
