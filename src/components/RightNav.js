@@ -80,6 +80,8 @@ function RightNav() {
         const post = await axios.get("/posts/"+id)
         .then(post => setPostInfo(post['data']))
         .catch(e => setPostInfo(""));
+        console.log(user)
+        console.log(post)
       };
     const handleChange = (e) => {
         if (e.target.value !== "") 

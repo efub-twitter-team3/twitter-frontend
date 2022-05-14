@@ -38,7 +38,7 @@ const Sidebar = () => {
 
       <div className="sidebar__bottom">
         <div className="bottom__left">
-          <img className="bottom__profileimg" src="" />
+          <img className="bottom__profileimg" src="" alt="" />
         </div>
         <div className="bottom__right">
           <p className="bottom__nickname">퍼비</p>

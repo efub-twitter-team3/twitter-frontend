@@ -1,7 +1,6 @@
 import React from "react";
 import "./Post.css";
 
-import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
@@ -10,7 +9,7 @@ import PublishIcon from "@material-ui/icons/Publish";
 const Post = ({ nickname, userId, identifier, date, content }) => {
   return (
     <div className="post">
-      <img className="post__profileimg" src="" />
+      <img className="post__profileimg" src="" alt=""/>
 
       <div className="post__right">
         <div className="post__header">

@@ -127,7 +127,7 @@ const Content = ({post}) => {
 function Main() {
   const [post, setPost] = useState([])
   const getpost = async () => {
-    const response = await axios.get("http://ec2-13-125-226-2.ap-northeast-2.compute.amazonaws.com/posts")
+    const response = await axios.get("/posts")
     .then(res => setPost(res['data'].reverse()))
     .catch(e => console.log(response))
   };
