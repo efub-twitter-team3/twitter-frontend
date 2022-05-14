@@ -1,0 +1,17 @@
+.sidebarcate {
+    font-size: var(--font-medium);
+    padding: 8px;
+    display: flex;
+    align-content: center;
+}
+
+.sidebarcate__icon {
+    margin-right: 15px
+}
+
+.sidebarcate:hover {
+    background-color: #f0f0f0;
+    border-radius: 40px;
+    transition: all var(--animation-duration) ease-in;
+}
+

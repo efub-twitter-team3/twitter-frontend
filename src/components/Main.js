@@ -1,9 +1,11 @@
-//가운데 메인(홈) 화면
 import React, {useState, useEffect, useRef} from "react";
 import {HeaderIcon,MediaIcon,GifIcon,VoteIcon,EmoticonIcon, GlobalIcon, OptionIcon,
   ReserveIcon,GpsIcon,ReplyIcon,ReTweetIcon,LikeIcon,ShareIcon} from './Icons';
 import '../App.css';
 import axios from "axios";
+import Sidebar from "./sidebar/Sidebar";
+import RightNav from "./RightNav";
+import ProfileImg from "../assets/images/profileImg.jpg";
 
 //최상단 트윗 입력 컴포넌트
 const TopContent = () => {
@@ -17,14 +19,14 @@ const TopContent = () => {
     console.log(inputs)
     const response = await axios.post("/posts",
     {
-      "userId" : 2,
+      "userId" : 1,
 	    "content" : inputs
     })
     .catch(e => console.log(response))
   }
   return(
   <div className="TopContentWrapper">
-    <div className="ProfileIcon"></div>
+    <img className = "ProfileIcon" alt="profile" src ={ProfileImg}/>
     <div className="TopContentRightWrapper">
       <input 
       className="MainInput" 
@@ -97,11 +99,11 @@ const Content = ({post}) => {
   }
   return(
     <div className="ContentWrapper">
-      <div className="ProfileIcon"></div>
+      <img className = "ProfileIcon" alt="profile" src ={ProfileImg}/>
       <div className="ContentRightWrapper">
         <div className="ContentTopWrapper">
           <h4 style={{margin: 0}}>{post.user.nickname}</h4>
-          <p className="IDText">{post.user.identifier}</p>
+          <p className="IDText">@{post.user.identifier}</p>
           <p className="IDText">·</p>
           <p className="IDText">{post.date}</p>
         </div>
@@ -123,21 +125,24 @@ function Main() {
   const [post, setPost] = useState([])
   const getpost = async () => {
     const response = await axios.get("/posts")
+    .then(res => setPost(res['data'].reverse()))
     .catch(e => console.log(response))
-    setPost(response['data'].reverse())
-    console.log(response['data'])
   };
   
   useEffect(() => {
     getpost();
   }, []);
   return (
-    <div className="MainWrapper">
-        <div className="MainHeader"> {/*홈 헤더*/}
-            홈 {HeaderIcon}
-        </div>
-        <TopContent/>
-        {post.map(p => <Content key = {p.postId} post = {p}/>)}
+    <div style={{display: 'flex'}}>
+      <Sidebar/>
+      <div className="MainWrapper">
+          <div className="MainHeader"> {/*홈 헤더*/}
+              홈 {HeaderIcon}
+          </div>
+          <TopContent/>
+          {post.map(p => <Content key = {p.postId} post = {p}/>)}
+      </div>   
+      <RightNav/>   
     </div>
   );
 }
