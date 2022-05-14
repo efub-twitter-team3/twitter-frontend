@@ -1,16 +1,16 @@
 import React from "react";
 import "./Post.css";
+import {OptionIcon,ReplyIcon,ReTweetIcon,LikeIcon,ShareIcon} from '../Icons';
+import ProfileImg from "../../assets/images/profileImg.jpg"
+
+
 
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
-import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import RepeatIcon from "@material-ui/icons/Repeat";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import PublishIcon from "@material-ui/icons/Publish";
 
 const Post = ({ nickname, userId, identifier, date, content }) => {
   return (
     <div className="post">
-      <img className="post__profileimg" src="" />
+      <img className="post__profileimg" src={ProfileImg} />
 
       <div className="post__right">
         <div className="post__header">
@@ -22,12 +22,12 @@ const Post = ({ nickname, userId, identifier, date, content }) => {
         </div>
         <p className="post__content">{content}</p>
         <div className="post__icon">
-          <ChatBubbleOutlineIcon fontSize="small" />
-          <RepeatIcon fontSize="small" />
-          <FavoriteBorderIcon fontSize="small" />
-          <PublishIcon fontSize="small" />
+          {ReplyIcon}{ReTweetIcon}{LikeIcon}{ShareIcon}
         </div>
       </div>
+
+      <button className="OptionButton">{OptionIcon}</button> {/*onClick={openModal}*/}
+
     </div>
   );
 };

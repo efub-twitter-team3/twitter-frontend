@@ -438,16 +438,18 @@
 }
 
 :root {
-    --color-twitter: rgb(29, 155, 240);
+    --color-twitter: #1d9bf0;
     --color-backbase-grey: #f0f0f0;
     --color-light-grey: grey;
     --color--grey: rgb(83, 100, 113);
+    --color-text-grey: #72818b;
 
     --font-large: 48px;
     --font-medium: 18px;
     --font-regular: 15x;
     --font-small: 13px;
     --font-micro: 14px;
+    --font-post-text: 15px;
 
     --weight-bold: 700;
     --weight-semi-bold: 600;
@@ -503,4 +505,9 @@
   .app {
     height: 100%;
   }
+
+.TwitterIcon {
+  color: var(--color-twitter);
+}
+
   

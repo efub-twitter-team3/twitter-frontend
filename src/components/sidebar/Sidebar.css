@@ -1,14 +1,16 @@
-.twitterIcon {
-    color: var(--color-twitter);
-    /*추가*/
+.TwitterIcon {
+    margin: 10px;
+    margin-top: 5px;
+    margin-left: 0;
+    color: var(--color-twitter); /*왜 안됨...*/
 }
+
 
 .sidebar { 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    overflow: hidden !important; 
 
     margin-left: 60px;
     padding: 30px;
@@ -62,3 +64,11 @@
 .bottom__right {
     font-size: 13px;
 }
+
+.bottom__profileimg {
+    border-radius: 50%;
+    width: 43px;
+    height: 43px;
+    margin-right: 9px;
+}
+

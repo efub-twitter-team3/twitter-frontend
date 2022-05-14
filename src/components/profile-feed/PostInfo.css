@@ -1,15 +1,18 @@
 .postinfo {
-    margin-top: 40px;
-    padding: 15px;
+    margin-top: 45px;
+    padding-bottom: 15px;
     position: relative;
 }
 
 .postinfo__editbutton {
     border-radius: 40px;
     border: 1px solid gray;
+    width: 100px;
+    height: 30px;
 
     position: absolute;
-    right: 0;
+    top: 215px;
+    right: 20px;
 }
 
 .postinfo__nameid {
@@ -19,7 +22,7 @@
 
 .postinfo__userid {
     font-size: 13px;
-    color: grey;
+    color: var(--color-text-grey);
 }
 
 .postinfo__bio {
@@ -29,7 +32,8 @@
 
 .postinfo__signup {
     font-size: 13px;
-    color: grey;
+    color: var(--color-text-grey);
+    display: flex;
 }
 
 .postinfo__follow {
@@ -39,4 +43,36 @@
 .postinfo__editbutton:hover {
     background-color: #f0f0f0;
     transition: all var(--animation-duration) ease-in;
+}
+
+.post__profileimg {
+    border-radius: 50%;
+}
+
+.postinfo__coverimg {
+    width: 100%;
+    height: 200px;
+}
+
+.postinfo__profileimg {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    border: solid white 5px;
+
+    position: absolute;
+    top: 140px;
+    left:30px;
+    z-index: 1;
+}
+
+.postinfo__bottom {
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+.SignupIcon {
+    margin-right: 3px;
+    display: flex;
+    align-items: center;
 }

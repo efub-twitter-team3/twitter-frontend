@@ -10,21 +10,21 @@ const SidebarCate = ({ Icon, text, isLink }) => {
       isLink === 1 ? (
         <NavLink to="/" style={{ textDecoration: 'none', color: 'black' }}>
         <div className="sidebarcate">
-          <Icon className="sidebarcate__icon" />
+          <div className="sidebarcate__icon">{Icon}</div>
           <span className="sidebarcate__text">{text}</span>
         </div>
         </NavLink>
       ) : (
         <NavLink to="/profile" style={{ textDecoration: 'none', color: 'black' }}>
         <div className="sidebarcate">
-          <Icon className="sidebarcate__icon" />
+          <div className="sidebarcate__icon">{Icon}</div>
           <span className="sidebarcate__text">{text}</span>
         </div>
         </NavLink>
       )
     ) : (
     <div className="sidebarcate">
-      <Icon className="sidebarcate__icon" />
+      <div className="sidebarcate__icon">{Icon}</div>
       <span className="sidebarcate__text">{text}</span>
     </div>
     )

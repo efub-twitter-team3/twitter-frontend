@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Post from "./Post";
 import PostInfo from "./PostInfo";
 import "./ProfileFeed.css"
+import {ArrowIcon} from '../Icons';
+
 
 const ProfileFeed = () => {
   const [posts, setPosts] = useState([]);
@@ -32,9 +34,15 @@ const ProfileFeed = () => {
 
   return (
     <div className="profilefeed">
+
       <div className="profilefeed__header">
-        <p className="profilefeed__nickname">퍼비</p>
-        <p className="tweetsCount">2 트윗</p>
+        <div className="profilefeed__header__left">
+          <div>{ArrowIcon}</div>
+        </div>
+        <div className="profilefeed__header__right">  
+          <p className="profilefeed__nickname">퍼비</p>
+          <p className="tweetsCount">2 트윗</p>
+        </div>
       </div>
 
       <PostInfo />
