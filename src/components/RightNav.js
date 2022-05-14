@@ -5,6 +5,8 @@ import '../App.css';
 import axios from "axios";
 import ProfileImg from "../assets/images/profileImg.jpg";
 
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
 //나를 위한 트렌트 컴포넌트
 const TrendContent = () => {
     return(
@@ -74,10 +76,10 @@ function RightNav() {
     const [userInfo, setUserInfo] = useState("");
     const [postInfo, setPostInfo] = useState(""); 
     const getResult = async (id) => {
-        const user = await axios.get("/users/"+id)
+        const user = await axios.get(`${PROXY}/users/`+id)
         .then(user => setUserInfo(user['data']))
         .catch(e =>setUserInfo(""));
-        const post = await axios.get("/posts/"+id)
+        const post = await axios.get(`${PROXY}/posts/`+id)
         .then(post => setPostInfo(post['data']))
         .catch(e => setPostInfo(""));
         console.log(user)

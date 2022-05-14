@@ -19,7 +19,7 @@ const TopContent = () => {
   }
   const SubmitInputs = async () => {
     console.log(inputs)
-    const response = await axios.post("/posts",
+    const response = await axios.post(`${PROXY}/posts`,
     {
       "userId" : 1,
 	    "content" : inputs
@@ -71,7 +71,7 @@ const Modal =({isOpenModal, setIsOpenModal, id})=> {
     }
   }
   const deletePost = async (id) => {
-    const response = await axios.delete("/posts/"+id)
+    const response = await axios.delete(`${PROXY}/posts/`+id)
     .catch(e => console.log(response))
   }
  
