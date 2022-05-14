@@ -26,6 +26,7 @@
 .profilefeed {
     width: 560px;
     margin: 15px 0;
+    margin-left: 312px; /*보류*/
 }
 
 .profilefeed__header {

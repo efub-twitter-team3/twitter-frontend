@@ -2,7 +2,7 @@
     margin-right:5px;
 }
 
-.post__userid {
+.post__identifier {
     margin:5px;
     color: var(--color-text-grey);
 }
