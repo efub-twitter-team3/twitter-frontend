@@ -1,0 +1,42 @@
+.postinfo {
+    margin-top: 40px;
+    padding: 15px;
+    position: relative;
+}
+
+.postinfo__editbutton {
+    border-radius: 40px;
+    border: 1px solid gray;
+
+    position: absolute;
+    right: 0;
+}
+
+.postinfo__nameid {
+    display: flex;
+    flex-direction: column;
+}
+
+.postinfo__userid {
+    font-size: 13px;
+    color: grey;
+}
+
+.postinfo__bio {
+    font-size: 13px;
+    margin: 8px 0;
+}
+
+.postinfo__signup {
+    font-size: 13px;
+    color: grey;
+}
+
+.postinfo__follow {
+    font-size: 13px;
+}
+
+.postinfo__editbutton:hover {
+    background-color: #f0f0f0;
+    transition: all var(--animation-duration) ease-in;
+}

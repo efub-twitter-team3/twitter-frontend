@@ -1,0 +1,48 @@
+.profilefeed__cate {
+    display: flex;
+    height: 50px;
+    border-bottom: 1.3px solid var(--color-backbase-grey); 
+}
+
+.cate__text {
+    width: 100%;
+    text-align: center;
+    line-height: 53px;
+    margin: 0;
+    font-size: 15px;
+}
+
+.cate__text.active {
+    border-bottom: 5px solid var(--color-twitter);
+}
+
+
+.cate__text:hover {
+    background-color: #f0f0f0;
+    transition: all var(--animation-duration) ease-in;
+
+}
+
+.profilefeed {
+    width: 560px;
+    margin: 15px;
+    margin-left: 0px;
+}
+
+.profilefeed__header {
+    position: fixed;
+    top:0px;
+    padding-left: 15px;
+    background-color: var(--color-backbase-grey);
+    width: 560px;
+    z-index: 1;
+}
+
+.profilefeed__nickname {
+    font-size: var(--font-regular);
+}
+
+.tweetsCount {
+    font-size: var(--font-small);
+    color: grey;
+}

@@ -1,0 +1,506 @@
+.App {
+  text-align: center;
+}
+/*메인 화면 헤더*/
+.MainHeader {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 53px;
+  width: 47vw;
+  background-color: rgba(255, 255, 255, 0.96);
+  padding: 0 13px;
+  font-size: 20px;
+  font-weight: bold;
+}
+/*메인 화면 전체*/
+.MainWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 150vh;
+  width: 47vw;
+  background-color: white;
+}
+/*최상단 트윗 입력 컴포넌트 전체*/
+.TopContentWrapper {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 13px;
+  margin-top: 53px;
+  border-bottom: 1px solid #f2f4f4;
+}
+/*최상단 트윗 입력 컴포넌트 우측*/
+.TopContentRightWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  margin-left: 1vw;
+}
+/*최상단 트윗 입력창*/
+.MainInput {
+  font-size: 20px;
+  height: 50px;
+  width: 40vw;
+  margin-left: 5px;
+  border: none;
+  outline: none;
+}
+/*최상단 트윗 입력 컴포넌트 우측 입력창에 입력 시 나타나는 글씨(모든 사람들이 답글을~)*/
+.TopRightMiddleWrapper {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-bottom: 15px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #1d9bf0;
+  border-bottom: 1px solid #f2f4f4;
+}
+/*최상단 트윗 입력 컴포넌트 우측 하단*/
+.TopRightBottomWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+/*최상단 트윗 입력 컴포넌트 우측 하단 아이콘들*/
+.TopRightBottomContentWrapper {
+  display: flex;
+  flex-direction: row;
+}
+/*'트윗하기' 버튼*/
+.MainButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  width: 96px;
+  border-radius: 20px;
+  background-color: #1d9bf0;
+  font-size: 15px;
+  color: white;
+  border: none;
+}
+.MainButton:disabled {
+  background-color: #8ecdf8;
+}
+/*트윗 더보기 버튼 모달 컴포넌트*/
+.Modal {
+  position: absolute;
+  right: 39vw;
+  width: 25vw;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 0px 0px 5px #9E9E9E;
+}
+/*트윗 더보기 버튼 모달 버튼*/
+.ModalButton {
+  display: flex;
+  width: 25vw;
+  padding: 15px;
+  font-size: 15px;
+  border: none;
+  background-color: white;
+}
+.ModalButton:hover {
+  background-color: #eff3f4;
+}
+/*트윗 더보기 버튼 삭제 모달*/
+.DeleteModal {
+  position: fixed; 
+  top: 25vh; 
+  left: 38vw;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  width: 320px; 
+  height: 300px; 
+  padding: 15px 30px;
+  font-size: 15px;
+  color: grey;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 5px #9E9E9E;
+}
+/*트윗 더보기 버튼 모달 제목*/
+.DeleteModalTitle {
+  margin: 0;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+/*'삭제' 버튼*/
+.DeleteButton {
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+}
+.DeleteButton:hover {
+  background-color: rgb(203, 0, 0);
+}
+/*'삭제 취소' 버튼*/
+.DeleteCancleButton {
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+}
+.DeleteCancleButton:hover {
+  background-color: rgb(222, 222, 222);
+}
+/*트윗 컴포넌트 전체*/
+.ContentWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 13px;
+  border-bottom: 1px solid #f2f4f4;
+}
+.ContentWrapper:hover {
+  background-color: #f2f4f4;
+}
+/*트윗 컴포넌트 우측*/
+.ContentRightWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+}
+/*트윗 컴포넌트 우측 상단(닉네임, 시간 등 정보)*/
+.ContentTopWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+/*트윗 컴포넌트 우측 하단(아이콘들)*/
+.ContentBottomWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 33vw;
+  padding-top: 5px;
+}
+/*트윗 더보기 버튼*/
+.OptionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: large;
+  border: none;
+  outline: none;
+  background-color: rgba(255,255,255,0);
+}
+.OptionButton:hover {
+  background-color: #ceecff;
+  color: #1d9bf0;
+}
+/*오른쪽 네비게이션 컴포넌트 전체*/
+.RightNavWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 32vw;
+  border-left: 1px solid #f2f4f4;
+}
+/*오른쪽 네비게이션 컴포넌트 헤더*/
+.RightNavHeader {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 53px;
+  width: 32vw;
+  background-color: rgba(255, 255, 255, 0.96);
+  padding: 0 30px;
+}
+/*오른쪽 네비게이션 검색 박스*/
+.RightSearchInputBox {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  height: 40px;
+  width: 400px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: #eff3f4;
+}
+.RightSearchInputBox:focus-within {
+  border: 1px solid #1d9bf0;
+  background-color: white;
+}
+/*오른쪽 네비게이션 검색 입력창*/
+.RightSearchInput {
+  font-size: 15px;
+  height: 15px;
+  width: 250px;
+  margin-left: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  outline: none;
+}
+/*오른쪽 네비게이션 검색 결과창*/
+.SearchModal {
+  position: absolute;
+  top: 50px;
+  left: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 375px;
+  min-height: 75px;
+  padding-top: 15px;
+  font-size: 15px;
+  color: #72818b;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0px 0px 5px #9E9E9E;
+}
+/*오른쪽 네비게이션 콘텐츠(트렌드, 팔로우) 전체*/
+.RightNavContentWrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 350px;
+  padding-top: 15px;
+  margin-top: 65px;
+  border-radius: 20px;
+  background-color: #f7f9f8;
+}
+/*오른쪽 네비게이션 콘텐츠 제목*/
+.RightNavTitleText {
+  font-size: 21px;
+  font-weight: bold;
+  margin: 0;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+/*오른쪽 네비게이션 콘텐츠 최하단 '더보기'*/
+.RightNavContentBottomWrapper {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 350px;
+  height: 50px;
+  padding-left:15px;
+  border-radius: 0px 0px 20px 20px;
+  color:#1d9bf0;
+}
+.RightNavContentBottomWrapper:hover {
+  background-color: #eff3f4;
+}
+/*오른쪽 네비게이션 콘텐츠 열(row)*/
+.RightNavContentRowWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+.RightNavContentRowWrapper:hover {
+  background-color: #eff3f4;
+}
+/*오른쪽 네비게이션 콘텐츠 행(column)*/
+.RightNavContentColumnWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 175px;
+  margin-left: 5px;
+}
+.RightNavContentColumnWrapperUser {
+  display: flex;
+  flex-direction: column;
+  width: 290px;
+  margin-left: 5px;
+  color: black;
+}
+/*'팔로우' 버튼*/
+.RightNavButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 80px;
+  border-radius: 20px;
+  background-color: black;
+  font-size: 15px;
+  color: white;
+  border: none;
+}
+/*오른쪽 네비게이션 최하단*/
+.RightNavBottomWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 350px;
+  padding: 15px;
+}
+/*오른쪽 네비게이션 최하단 글씨*/
+.RightNavBottomText {
+  color: #72818b;
+  font-size: 13px;
+  margin-left: 10px;
+  text-decoration: none;
+}
+.RightNavBottomText:hover {
+  text-decoration: underline;
+}
+/*프로필 화면*/
+.ProfileIcon {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+}
+/*아이디 글씨*/
+.IDText {
+  margin: 0 2px;
+  font-size: '15px';
+  color: #72818b;
+}
+/*메인 화면 헤더 아이콘*/
+.MainHeaderIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.MainHeaderIcon:hover {
+  background-color: #eff3f4;
+}
+/*최상단 트윗 입력 컴포넌트 아이콘*/
+.MainTopIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.MainTopIcon:hover {
+  background-color: #ceecff;
+}
+/*트윗 파란 배경 아이콘*/
+.TweetIconB {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.TweetIconB:hover {
+  background-color: #ceecff;
+}
+
+/*트윗 빨간 배경 아이콘*/
+.TweetIconR {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.TweetIconR:hover {
+  background-color: #ffced9;
+}
+/*트윗 초록 배경 아이콘*/
+.TweetIconG {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.TweetIconG:hover {
+  background-color: #e2ffea;
+}
+
+:root {
+    --color-twitter: rgb(29, 155, 240);
+    --color-backbase-grey: #f0f0f0;
+    --color-light-grey: grey;
+    --color--grey: rgb(83, 100, 113);
+
+    --font-large: 48px;
+    --font-medium: 18px;
+    --font-regular: 15x;
+    --font-small: 13px;
+    --font-micro: 14px;
+
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+
+    --animation-duration: 90ms;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  html,body {
+    margin: 0;
+    cursor: default;
+    height: 100vh;
+  }
+
+  button {
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+
+  h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    color: var(--color-black);
+    margin: 16px 0px;
+  }
+  
+  h2 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+    margin: 8px 0;
+  }
+  
+  h3 {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 8px 0;
+  }
+  
+  p {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-black);
+    margin: 4px 0;
+  }
+
+  .app {
+    height: 100%;
+  }
+  

@@ -1,0 +1,35 @@
+.post__nickname {
+    margin-right:5px;
+}
+
+.post__userid {
+    margin:5px;
+}
+
+.post__date {
+    margin:5px;
+}
+.post {
+    border-bottom: 1.3px solid var(--color-backbase-grey);
+
+    display: flex;
+    flex-direction: column;
+    padding: 8px 15px;
+    
+}
+
+.post__icon {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 13px;
+}
+
+.post__right {
+    font-size: 13px;
+}
+
+.post:hover {
+    background-color: #f0f0f0;
+    transition: all var(--animation-duration) ease-in;
+
+}
