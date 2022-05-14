@@ -2,6 +2,8 @@
 import React, {useState} from "react";
 import {SearchIcon, OptionIcon} from './Icons';
 import '../App.css';
+import axios from "axios";
+import ProfileImg from "../assets/images/profileImg.jpg";
 
 //나를 위한 트렌트 컴포넌트
 const TrendContent = () => {
@@ -25,7 +27,7 @@ const TrendContent = () => {
 const FollowContent = () => {
     return (
         <div className="RightNavContentRowWrapper">
-        <div className="ProfileIcon"></div>
+        <img className = "ProfileIcon" alt="profile" src ={ProfileImg}/>
         <div className="RightNavContentColumnWrapper">
             <h4 style={{margin: 0}}>닉네임</h4>
             <p className="IDText">@ident</p>
@@ -35,9 +37,54 @@ const FollowContent = () => {
     );
 }
 
+//유저 검색 결과 컴포넌트
+const UserContent = ({user}) => {
+    return (
+        <div className="RightNavContentRowWrapper">
+        <img className = "ProfileIcon" alt="profile" src ={ProfileImg}/>
+        <div className="RightNavContentColumnWrapperUser">
+            <h3 style={{margin: 0, color: 'black', fontWeight: 'bold'}}>{user.nickname}</h3>
+            <p className="IDText">@{user.identifier}</p>
+            <p className="IDText">{user.bio}</p>
+        </div>
+      </div>
+    );
+}
+
+const PostContent = ({post}) => {
+    return(
+      <div className="RightNavContentRowWrapper">
+        <img className = "ProfileIcon" alt="profile" src ={ProfileImg}/>
+        <div className="RightNavContentColumnWrapperUser">
+            <div className="ContentTopWrapper">
+                <h3 style={{margin: 0, color: 'black', fontWeight: 'bold'}}>{post.user.nickname}</h3>
+                <p className="IDText">@{post.user.identifier}</p>
+                <p className="IDText">·</p>
+                <p className="IDText">{post.date}</p>
+            </div>
+            {post.content}
+        </div>
+      </div>
+    );
+  }
+
 //오른쪽 네비게이션 메인 컴포넌트
 function RightNav() {
     const [isFocused, setIsFocused] = useState(false);
+    const [userInfo, setUserInfo] = useState("");
+    const [postInfo, setPostInfo] = useState(""); 
+    const getResult = async (id) => {
+        const user = await axios.get("/users/"+id)
+        .then(user => setUserInfo(user['data']))
+        .catch(e =>setUserInfo(""));
+        const post = await axios.get("/posts/"+id)
+        .then(post => setPostInfo(post['data']))
+        .catch(e => setPostInfo(""));
+      };
+    const handleChange = (e) => {
+        if (e.target.value !== "") 
+            getResult(e.target.value)
+    };
   return (
     <div className="RightNavWrapper">
         <div className="RightNavHeader"> {/*오른쪽 네비게이션 헤더(검색 입력창)*/}
@@ -46,9 +93,15 @@ function RightNav() {
                 <input className="RightSearchInput"
                 placeholder="트위터 검색" 
                 onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}/>
+                onBlur={() => {setIsFocused(false);setUserInfo("");setPostInfo("");}}
+                onChange={handleChange}/>
             </div>
-            {isFocused && <div className="SearchModal">사용자, 화제, 키워드를 검색해보세요</div>}
+            {isFocused && 
+            <div className="SearchModal">
+                사용자, 화제, 키워드를 검색해보세요
+                {userInfo === "" ? null : <UserContent user = {userInfo}/>}
+                {postInfo === "" ? null : <PostContent post = {postInfo}/>}
+            </div>}
         </div>
         <div className="RightNavContentWrapper">
             <p className="RightNavTitleText">
