@@ -1,15 +1,37 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 
 import SidebarCate from "./SidebarCate";
 
 import "./Sidebar.css" 
 import ProfileImg from "../../assets/images/profileImg.jpg"
+import axios from "axios";
+
+import TweetModal from './TweetModal';
 
 
 import {TwitterIcon,HomeIcon,ExploreIcon,NotificationIcon,MessageIcon,BookmarkIcon,ListIcon,HumanIcon,MoreIcon,OptionIcon} from '../Icons';
 
 
 const Sidebar = () => {
+  const [nameInfo, setInfo] = useState(''); 
+
+  const editedNameInfo = async () => {
+    const response = await axios.get("/users/1")
+    .then(res => setInfo(res.data))
+    .catch(e => console.log(response))
+  }; 
+
+  useEffect(() => {
+    editedNameInfo();
+  }, [nameInfo]);  
+
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {
+    setShowModal(true);
+  }
+
+
+
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -28,7 +50,11 @@ const Sidebar = () => {
           <SidebarCate Icon={MoreIcon} text="더 보기" isLink={0}/>
         </div>
 
-        <button className="sidebar__tweetbutton">트윗하기</button>
+        <div onClick={e => e.stopPropagation()}>
+          <button onClick={openModal} className="sidebar__tweetbutton">트윗하기</button>
+        </div>
+        {showModal && <TweetModal isOpenModal={showModal} setIsOpenModal={setShowModal}/>}
+
       </div>
 
       <div className="sidebar__bottom">
@@ -36,8 +62,8 @@ const Sidebar = () => {
           <img className="bottom__profileimg" src={ProfileImg} />
         </div>
         <div className="bottom__right">
-          <p className="bottom__nickname">퍼비</p>
-          <p className="bottom__userid">@fub2fub</p>
+          <p className="bottom__nickname">{nameInfo.nickname}</p>
+          <p className="bottom__userid">@testIdentifier</p>
         </div>
         <div className="sidebar__optionicon">{OptionIcon}</div>
       </div>

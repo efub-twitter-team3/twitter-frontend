@@ -16,17 +16,19 @@ const PostInfo = () => {
     setShowModal(true);
   }
 
-  const [info, setInfo] = useState(''); //보류
+
+  const [info, setInfo] = useState(''); 
 
   const editedInfo = async () => {
     const response = await axios.get("/users/1")
     .then(res => setInfo(res.data))
     .catch(e => console.log(response))
-  }; //보류
+  }; 
 
   useEffect(() => {
     editedInfo();
-  }, [info]);  //보류
+  }, [info]);  
+
 
 
   return (
@@ -39,13 +41,13 @@ const PostInfo = () => {
           프로필 수정
         </button>
       </div>
-      {showModal && <EditModal isOpenModal={showModal} setIsOpenModal={setShowModal}/>}
+      {showModal && <EditModal currentName={info.nickname} isOpenModal={showModal} setIsOpenModal={setShowModal}/>}
 
 
       <div className="postinfo__bottom">
         <div className="postinfo__nameid">
           <span className="postinfo__nickname">{info.nickname}</span> 
-          <span className="postinfo__userid">@fub2fub</span>
+          <span className="postinfo__userid">@testIdentifier</span>
         </div>
 
         <p className="postinfo__bio">{info.bio}</p>
@@ -53,7 +55,7 @@ const PostInfo = () => {
         <p className="postinfo__signup">{SignupIcon}가입일: 2022년 1월 1일</p>
 
         <div className="postinfo__follow">
-          <span>1 팔로우 중</span>
+          <span>2 팔로우 중</span>
           <span>0 팔로워</span>
         </div>
       </div>  

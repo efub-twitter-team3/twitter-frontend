@@ -1,0 +1,102 @@
+.tweetmodal {
+    position: fixed; 
+    top: 18vh; 
+    left: 23vw;
+
+    padding: 15px;
+    padding-bottom: 7px;
+
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 5px #9E9E9E;
+    z-index: 99;
+}
+
+.tweetmodal__wrapper__bottom {
+    display: flex;
+    flex-direction: row;
+    
+    box-sizing: border-box;
+    padding: 13px;
+  }
+
+  .deletetweetModal {
+    border-radius:50%;
+      border: none;
+      margin-left: 13px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+  }
+
+  .deletetweetModal:hover {
+    background-color: var(--color-backbase-grey);
+  }
+
+  .tweetmodal__ProfileIcon {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+  }
+  
+  /*최상단 트윗 입력 컴포넌트 우측*/
+  .tweetmodal__RightWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    margin-left: 1vw;
+  }
+  /*최상단 트윗 입력창*/
+  .tweetmodal__MainInput {
+    font-size: 20px;
+    height: 50px;
+    width: 40vw;
+    margin-left: 5px;
+    border: none;
+    outline: none;
+  }
+  /*최상단 트윗 입력 컴포넌트 우측 입력창에 입력 시 나타나는 글씨(모든 사람들이 답글을~)*/
+  .tweetmodal__RightMiddleWrapper {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-bottom: 15px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #1d9bf0;
+    border-bottom: 1px solid #f2f4f4;
+  }
+  /*최상단 트윗 입력 컴포넌트 우측 하단*/
+  .tweetmodal__RightBottomWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+  /*최상단 트윗 입력 컴포넌트 우측 하단 아이콘들*/
+  .tweetmodal__RightBottomContentWrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  /*'트윗하기' 버튼*/
+  .tweetmodal__MainButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    width: 96px;
+    border-radius: 20px;
+    background-color: #1d9bf0;
+    font-size: 15px;
+    color: white;
+    border: none;
+  }
+  .tweetmodal__MainButton:disabled {
+    background-color: #8ecdf8;
+  }
+  
+  

@@ -21,15 +21,29 @@ const ProfileFeed = () => {
     getPosts();
   }, [posts]);
 
+
+  const [nameInfo, setInfo] = useState(''); 
+
+  const editedNameInfo = async () => {
+    const response = await axios.get("/users/1")
+    .then(res => setInfo(res.data))
+    .catch(e => console.log(response))
+  }; 
+
+  useEffect(() => {
+    editedNameInfo();
+  }, [nameInfo]);  
+
+
   return (
     <div className="profilefeed">
 
       <div className="profilefeed__header">
         <div className="profilefeed__header__left">
-          <div>{ArrowIcon}</div>
+          <div className="arrowicon">{ArrowIcon}</div>
         </div>
         <div className="profilefeed__header__right">  
-          <p className="profilefeed__nickname">퍼비</p>
+          <p className="profilefeed__nickname">{nameInfo.nickname}</p>
           <p className="tweetsCount">2 트윗</p>
         </div>
       </div>
