@@ -15,6 +15,7 @@ const ProfileFeed = () => {
     const response = await axios.get("/users/1/posts") //userId=1로 고정
     .then(res => setPosts(res['data'].reverse()))
     .catch(e => console.log(response))
+    console.log(posts.length)
   };
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const ProfileFeed = () => {
         </div>
         <div className="profilefeed__header__right">  
           <p className="profilefeed__nickname">{nameInfo.nickname}</p>
-          <p className="tweetsCount">2 트윗</p>
+          <p className="tweetsCount">{posts.length} 트윗</p>
         </div>
       </div>
 
