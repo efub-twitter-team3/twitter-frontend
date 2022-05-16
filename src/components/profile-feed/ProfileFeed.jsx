@@ -4,6 +4,7 @@ import Post from "./Post";
 import PostInfo from "./PostInfo";
 import "./ProfileFeed.css"
 import {ArrowIcon} from '../Icons';
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -41,7 +42,7 @@ const ProfileFeed = () => {
 
       <div className="profilefeed__header">
         <div className="profilefeed__header__left">
-          <div className="arrowicon">{ArrowIcon}</div>
+          <Link to={"/"}><button className="arrowicon">{ArrowIcon}</button></Link>
         </div>
         <div className="profilefeed__header__right">  
           <p className="profilefeed__nickname">{nameInfo.nickname}</p>
