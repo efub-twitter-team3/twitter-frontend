@@ -4,6 +4,7 @@ import './TweetModal.css';
 import axios from "axios";
 import ProfileImg from "../../assets/images/profileImg.jpg"
 
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 const TweetModal = ({isOpenModal, setIsOpenModal}) => {
     const wrapperRef = useRef();
@@ -34,7 +35,7 @@ const TweetModal = ({isOpenModal, setIsOpenModal}) => {
 
     const SubmitInputs = async () => {
       console.log(inputs)
-      const response = await axios.post("/posts",
+      const response = await axios.post(`${PROXY}/posts`,
       {
         "userId" : 1,
         "content" : inputs

@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import '../../App';
 import axios from "axios";
 
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 const Modal = ({isOpenModal, setIsOpenModal, id}) => {
     const [deleteModal, setDeleteModal] = useState(false);
@@ -25,7 +26,7 @@ const Modal = ({isOpenModal, setIsOpenModal, id}) => {
     }
     
     const deletePost = async (id) => {
-      const response = await axios.delete("/posts/"+id)
+      const response = await axios.delete(`${PROXY}/posts/`+id)
       .catch(e => console.log(response))
     }
   

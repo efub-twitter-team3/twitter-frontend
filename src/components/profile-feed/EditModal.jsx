@@ -5,6 +5,8 @@ import axios from "axios";
 import CoverImg from '../../assets/images/coverImg.jpg'
 import ProfileImg from '../../assets/images/profileImg.jpg'
 
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
 const EditModal = ({currentName, isOpenModal, setIsOpenModal}) => {
     const [nameInputs, setNameInputs] = useState('');
     const [bioInputs, setBioInputs] = useState('');
@@ -34,7 +36,7 @@ const EditModal = ({currentName, isOpenModal, setIsOpenModal}) => {
         console.log(currentName.valueOf())
         console.log(nameInputs)
         console.log(bioInputs)
-        const response = await axios.put("/users/1",
+        const response = await axios.put(`${PROXY}/users/1`,
         {
             "nickname" : nameInputs,
             "identifier" : "testIdentifier",
