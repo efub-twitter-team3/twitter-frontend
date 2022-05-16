@@ -6,7 +6,6 @@ import axios from "axios";
 import ProfileImg from "../assets/images/profileImg.jpg";
 
 const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
-
 //나를 위한 트렌트 컴포넌트
 const TrendContent = () => {
     return(

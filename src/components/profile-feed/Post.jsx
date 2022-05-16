@@ -1,32 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Post.css";
+import {OptionIcon,ReplyIcon,ReTweetIcon,LikeIcon,ShareIcon} from '../Icons';
+import ProfileImg from "../../assets/images/profileImg.jpg"
+import Modal from "./Modal";
 
-import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import RepeatIcon from "@material-ui/icons/Repeat";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import PublishIcon from "@material-ui/icons/Publish";
+const Post = ({post}) => {
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {
+    setShowModal(true);
+  }
 
-const Post = ({ nickname, userId, identifier, date, content }) => {
   return (
     <div className="post">
-      <img className="post__profileimg" src="" alt=""/>
+      <img className="post__profileimg" src={ProfileImg} alt=""/>
 
       <div className="post__right">
         <div className="post__header">
-          <span className="post__nickname">{nickname}</span>
-          <span className="post__userid">
-            @{userId}
+          <span className="post__nickname">{post.user.nickname}</span>
+          <span className="post__identifier">
+            @{post.user.identifier}
           </span>
-          <span className="post__date">{date}</span>
+          <span className="post__date">{post.date}</span>
         </div>
-        <p className="post__content">{content}</p>
+        <p className="post__content">{post.content}</p>
         <div className="post__icon">
-          <ChatBubbleOutlineIcon fontSize="small" />
-          <RepeatIcon fontSize="small" />
-          <FavoriteBorderIcon fontSize="small" />
-          <PublishIcon fontSize="small" />
+          {ReplyIcon}{ReTweetIcon}{LikeIcon}{ShareIcon}
         </div>
       </div>
+
+
+      <div onClick={e => e.stopPropagation()}>
+        <button className="OptionButton" onClick={openModal}>{OptionIcon}</button>
+      </div>
+      {showModal && <Modal isOpenModal={showModal} setIsOpenModal={setShowModal} id={post.postId}/>}
+
+
     </div>
   );
 };

@@ -10,7 +10,7 @@
   justify-content: space-between;
   box-sizing: border-box;
   height: 53px;
-  width: 47vw;
+  width: 44vw;
   background-color: rgba(255, 255, 255, 0.96);
   padding: 0 13px;
   font-size: 20px;
@@ -21,8 +21,9 @@
   display: flex;
   flex-direction: column;
   min-height: 150vh;
-  width: 47vw;
+  width: 44vw;
   background-color: white;
+  margin-left: 308px; /*보류*/
 }
 /*최상단 트윗 입력 컴포넌트 전체*/
 .TopContentWrapper {
@@ -37,14 +38,14 @@
 .TopContentRightWrapper {
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 35vw;
   margin-left: 1vw;
 }
 /*최상단 트윗 입력창*/
 .MainInput {
   font-size: 20px;
   height: 50px;
-  width: 40vw;
+  width: 35vw;
   margin-left: 5px;
   border: none;
   outline: none;
@@ -178,7 +179,7 @@
 .ContentRightWrapper {
   display: flex;
   flex-direction: column;
-  width: 35vw;
+  width: 32vw;
 }
 /*트윗 컴포넌트 우측 상단(닉네임, 시간 등 정보)*/
 .ContentTopWrapper {
@@ -249,8 +250,10 @@
 }
 /*오른쪽 네비게이션 검색 입력창*/
 .RightSearchInput {
+  display: flex;
+  align-items: center;
   font-size: 15px;
-  height: 15px;
+  height: 18px;
   width: 250px;
   margin-left: 10px;
   background-color: rgba(255, 255, 255, 0);
@@ -383,6 +386,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
+  margin-right: 20px;
 }
 .MainHeaderIcon:hover {
   background-color: #eff3f4;
@@ -438,16 +442,18 @@
 }
 
 :root {
-    --color-twitter: rgb(29, 155, 240);
+    --color-twitter: #1d9bf0;
     --color-backbase-grey: #f0f0f0;
     --color-light-grey: grey;
     --color--grey: rgb(83, 100, 113);
+    --color-text-grey: #72818b;
 
     --font-large: 48px;
     --font-medium: 18px;
     --font-regular: 15x;
     --font-small: 13px;
     --font-micro: 14px;
+    --font-post-text: 15px;
 
     --weight-bold: 700;
     --weight-semi-bold: 600;
@@ -503,4 +509,9 @@
   .app {
     height: 100%;
   }
+
+.TwitterIcon {
+  color: var(--color-twitter);
+}
+
   

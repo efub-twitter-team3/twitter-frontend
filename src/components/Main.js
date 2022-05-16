@@ -8,7 +8,6 @@ import RightNav from "./RightNav";
 import ProfileImg from "../assets/images/profileImg.jpg";
 
 const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
-
 //최상단 트윗 입력 컴포넌트
 const TopContent = () => {
   const [inputs, setInputs] = useState('');
@@ -36,7 +35,7 @@ const TopContent = () => {
       className="MainInput" 
       placeholder="무슨 일이 일어나고 있나요?" 
       onChange={handleInputChange}
-      value={inputs}/>
+      value = {inputs}/>
       {isDiasabled ? null : 
       <div className="TopRightMiddleWrapper">
         {GlobalIcon}{'모든사람들이 답글을 달 수 있습니다'}  

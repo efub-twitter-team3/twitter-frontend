@@ -1,20 +1,23 @@
 .post__nickname {
     margin-right:5px;
+    font-weight: bold;
 }
 
-.post__userid {
+.post__identifier {
     margin:5px;
+    color: var(--color-text-grey);
 }
 
 .post__date {
     margin:5px;
+    color: var(--color-text-grey);
+
 }
 .post {
     border-bottom: 1.3px solid var(--color-backbase-grey);
 
     display: flex;
-    flex-direction: column;
-    padding: 8px 15px;
+    padding: 13px;
     
 }
 
@@ -22,14 +25,23 @@
     display: flex;
     justify-content: space-between;
     margin-top: 13px;
+    margin-right: 40px;
 }
 
 .post__right {
-    font-size: 13px;
+    font-size: var(--font-post-text);
+    width: 100%;
 }
 
 .post:hover {
     background-color: #f0f0f0;
     transition: all var(--animation-duration) ease-in;
 
+}
+
+.post__profileimg {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    margin-right: 13px;
 }

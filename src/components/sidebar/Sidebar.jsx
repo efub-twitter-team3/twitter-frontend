@@ -1,49 +1,72 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 
 import SidebarCate from "./SidebarCate";
 
 import "./Sidebar.css" 
+import ProfileImg from "../../assets/images/profileImg.jpg"
+import axios from "axios";
 
-import TwitterIcon from "@material-ui/icons/Twitter";
-import HomeIcon from "@material-ui/icons/Home";
-import SearchIcon from "@material-ui/icons/Search";
-import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import ListAltIcon from "@material-ui/icons/ListAlt";
-import PermIdentityIcon from "@material-ui/icons/PermIdentity";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import TweetModal from './TweetModal';
+
+
+import {TwitterIcon,HomeIcon,ExploreIcon,NotificationIcon,MessageIcon,BookmarkIcon,ListIcon,HumanIcon,MoreIcon,OptionIcon} from '../Icons';
+
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 const Sidebar = () => {
+  const [nameInfo, setInfo] = useState(''); 
+
+  const editedNameInfo = async () => {
+    const response = await axios.get(`${PROXY}/users/1`)
+    .then(res => setInfo(res.data))
+    .catch(e => console.log(response))
+  }; 
+
+  useEffect(() => {
+    editedNameInfo();
+  }, [nameInfo]);  
+
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {
+    setShowModal(true);
+  }
+
+
+
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-        <div className="twitterIcon__box">
-          <TwitterIcon className="twitterIcon" />
+        <div>
+          {TwitterIcon}
         </div>
 
         <div>
-          <SidebarCate Icon={HomeIcon} text="홈" isLink={1}></SidebarCate>
-          <SidebarCate Icon={SearchIcon} text="탐색하기" isLink={0}/>
-          <SidebarCate Icon={NotificationsNoneIcon} text="알림" isLink={0}/>
-          <SidebarCate Icon={MailOutlineIcon} text="쪽지" isLink={0}/>
-          <SidebarCate Icon={BookmarkBorderIcon} text="북마크" isLink={0}/>
-          <SidebarCate Icon={ListAltIcon} text="리스트" isLink={0}/>
-          <SidebarCate Icon={PermIdentityIcon} text="프로필" isLink={2}></SidebarCate>
-          <SidebarCate Icon={MoreHorizIcon} text="더 보기" isLink={0}/>
+          <SidebarCate Icon={HomeIcon} text="홈" isLink={1} ></SidebarCate>
+          <SidebarCate Icon={ExploreIcon} text="탐색하기" isLink={0}/>
+          <SidebarCate Icon={NotificationIcon} text="알림" isLink={0}/>
+          <SidebarCate Icon={MessageIcon} text="쪽지" isLink={0}/>
+          <SidebarCate Icon={BookmarkIcon} text="북마크" isLink={0}/>
+          <SidebarCate Icon={ListIcon} text="리스트" isLink={0}/>
+          <SidebarCate Icon={HumanIcon} text="프로필" isLink={2}></SidebarCate>
+          <SidebarCate Icon={MoreIcon} text="더 보기" isLink={0}/>
         </div>
 
-        <button className="sidebar__tweetbutton">트윗하기</button>
+        <div onClick={e => e.stopPropagation()}>
+          <button onClick={openModal} className="sidebar__tweetbutton">트윗하기</button>
+        </div>
+        {showModal && <TweetModal isOpenModal={showModal} setIsOpenModal={setShowModal}/>}
+
       </div>
 
       <div className="sidebar__bottom">
         <div className="bottom__left">
-          <img className="bottom__profileimg" src="" alt="" />
+          <img className="bottom__profileimg" src={ProfileImg} alt=""/>
         </div>
         <div className="bottom__right">
-          <p className="bottom__nickname">퍼비</p>
-          <p className="bottom__userid">@fub2fub</p>
+          <p className="bottom__nickname">{nameInfo.nickname}</p>
+          <p className="bottom__userid">@testIdentifier</p>
         </div>
+        <div className="sidebar__optionicon">{OptionIcon}</div>
       </div>
     </div>
   );

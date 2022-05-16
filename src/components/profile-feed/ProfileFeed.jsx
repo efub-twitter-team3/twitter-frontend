@@ -3,38 +3,51 @@ import React, { useState, useEffect } from "react";
 import Post from "./Post";
 import PostInfo from "./PostInfo";
 import "./ProfileFeed.css"
+import {ArrowIcon} from '../Icons';
+import { Link } from "react-router-dom";
+
+import axios from "axios";
+
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 const ProfileFeed = () => {
   const [posts, setPosts] = useState([]);
 
+  const getPosts = async () => {
+    const response = await axios.get(`${PROXY}/users/1/posts`) //userId=1로 고정
+    .then(res => setPosts(res['data'].reverse()))
+    .catch(e => console.log(response))
+  };
+
   useEffect(() => {
-    //무한루프에 빠져서 렌더링 안돼서, setPosts를 useEffect 안에 넣어줌
-    setPosts([
-      {
-        postId: 1,
-        userId: "fub2fub",
-        nickname: "퍼비",
-        identifier: true,
-        date: "2020-01-04 12:23:56",
-        content: "테스트",
-      },
-      {
-        postId: 12,
-        userId: "fub2fub",
-        nickname: "퍼비",
-        identifier: true,
-        bio: "",
-        date: "2020-02-04 10:53:26",
-        content: "하이",
-      },
-    ]);
-  }, []);
+    getPosts();
+  }, [posts]);
+
+
+  const [nameInfo, setInfo] = useState(''); 
+
+  const editedNameInfo = async () => {
+    const response = await axios.get(`${PROXY}/users/1`)
+    .then(res => setInfo(res.data))
+    .catch(e => console.log(response))
+  }; 
+
+  useEffect(() => {
+    editedNameInfo();
+  }, [nameInfo]);  
+
 
   return (
     <div className="profilefeed">
+
       <div className="profilefeed__header">
-        <p className="profilefeed__nickname">퍼비</p>
-        <p className="tweetsCount">2 트윗</p>
+        <div className="profilefeed__header__left">
+          <Link to={"/"}><button className="arrowicon">{ArrowIcon}</button></Link>
+        </div>
+        <div className="profilefeed__header__right">  
+          <p className="profilefeed__nickname">{nameInfo.nickname}</p>
+          <p className="tweetsCount">{posts.length} 트윗</p>
+        </div>
       </div>
 
       <PostInfo />
@@ -46,14 +59,10 @@ const ProfileFeed = () => {
         <p className="cate__text">마음에 들어요</p>
       </div>
 
-      {posts.map((post) => (
+      {posts.map((p) => (
         <Post
-          key={post.postId}
-          nickname={post.nickname}
-          userId={post.userId}
-          identifier={post.identifier}
-          content={post.content}
-          date={post.date}
+          key={p.postId}
+          post={p}
         />
       ))}
     </div>
