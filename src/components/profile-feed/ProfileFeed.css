@@ -72,12 +72,13 @@
       width: 30px;
       height: 30px;
 
+
   }
 
   .ArrowIcon:hover {
     background-color: var(--color-backbase-grey);
   }
-
+  
   button {
-    border: none
+      border: none
   }
